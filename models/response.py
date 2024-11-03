@@ -7,7 +7,7 @@
 
 new_line = "\r\n"
 
-class response:
+class Response:
     def __init__(self, version, status_code, phrase, body):
         self.version = version
         self.status_code = status_code
