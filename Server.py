@@ -5,14 +5,17 @@ from models.response import Response
 from models.request import Request
 from httphandler import http_message_handler
 
+
 # GOAL: create a server that listens for, accepts, and responds to concurrent tcp connections
 # what does a server need to do?
 # runs on a machine (IP address needed to identify machine on a network)
 # process listens on a particular port, ready to accept tcp connections
-# process needs to track and handle each connection 
-    # to process a connection it needs to be accepted, tracked, data needs to be received, a response needs to be sent, then the connection needs to be closed
+# process needs to track and handle each connection
+# to process a connection it needs to be accepted, tracked, data needs to be received, a response needs to be sent, then the connection needs to be closed
 class Server:
-    def __init__(self, host="localhost", port=8080, message_handler=http_message_handler):
+    def __init__(
+        self, host="localhost", port=8080, message_handler=http_message_handler
+    ):
         self.host = host
         self.port = port
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -34,7 +37,7 @@ class Server:
                 data = client_socket.recv(1024)
                 if not data:
                     break
-                
+
                 client_socket.send(self.message_handler(data.decode()).encoded())
         except Exception as e:
             self.logger.error(f"error handling client {address}: {e}")
