@@ -32,15 +32,15 @@ example:
 python program.py
 ```
 
-The server should respond with the following on startup
-
-**2024-11-03 15:10:11,189 - INFO - server listening on localhost:8080**
-
 You can also run the server with a desired hostname and port like this:
 
 ```sh
 python ./program.py --host=localhost --port=8080
 ```
+
+The server should respond with the following on startup
+
+**2024-11-03 15:10:11,189 - INFO - server listening on localhost:8080**
 
 ### 3. make a request
 
