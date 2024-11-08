@@ -27,6 +27,10 @@ def http_message_handler(message) -> Response:
                     server_response.headers["Connection:"] = "close"
                     server_response.headers["Content-Length:"] = str(length)
                     return server_response
+            case "/health-check":
+                    server_response = Response("HTTP/1.1", "200", "OK", "")
+                    server_response.headers["Connection:"] = "close"
+                    return server_response
             case _:
                 with open("./www/not-found.html") as file:
                     content = file.read()
